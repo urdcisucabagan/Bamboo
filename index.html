@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/IsabelaStateUniversityCabaganCampus_4.js"></script>
+        <script src="data/NumberofCulm_5.js"></script>
+        <script src="data/Bamboo_6.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[17.408434911576244,121.80980247657868],[17.414437411310658,121.81651623197034]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_DarkMatternolabelsretina_0');
+        map.getPane('pane_DarkMatternolabelsretina_0').style.zIndex = 400;
+        var layer_DarkMatternolabelsretina_0 = L.tileLayer('https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png', {
+            pane: 'pane_DarkMatternolabelsretina_0',
+            opacity: 1.0,
+            attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_DarkMatternolabelsretina_0;
+        map.addLayer(layer_DarkMatternolabelsretina_0);
+        map.createPane('pane_DarkMatterretina_1');
+        map.getPane('pane_DarkMatterretina_1').style.zIndex = 401;
+        var layer_DarkMatterretina_1 = L.tileLayer('https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png', {
+            pane: 'pane_DarkMatterretina_1',
+            opacity: 1.0,
+            attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_DarkMatterretina_1;
+        map.addLayer(layer_DarkMatterretina_1);
+        map.createPane('pane_OpenTopoMap_2');
+        map.getPane('pane_OpenTopoMap_2').style.zIndex = 402;
+        var layer_OpenTopoMap_2 = L.tileLayer('https://a.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenTopoMap_2',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_OpenTopoMap_2;
+        map.addLayer(layer_OpenTopoMap_2);
+        map.createPane('pane_GoogleSatellite_3');
+        map.getPane('pane_GoogleSatellite_3').style.zIndex = 403;
+        var layer_GoogleSatellite_3 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_3',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleSatellite_3;
+        map.addLayer(layer_GoogleSatellite_3);
+        function pop_IsabelaStateUniversityCabaganCampus_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_IsabelaStateUniversityCabaganCampus_4_0() {
+            return {
+                pane: 'pane_IsabelaStateUniversityCabaganCampus_4',
+                opacity: 1,
+                color: 'rgba(255,1,5,1.0)',
+                dashArray: '10,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,182,54,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_IsabelaStateUniversityCabaganCampus_4');
+        map.getPane('pane_IsabelaStateUniversityCabaganCampus_4').style.zIndex = 404;
+        map.getPane('pane_IsabelaStateUniversityCabaganCampus_4').style['mix-blend-mode'] = 'normal';
+        var layer_IsabelaStateUniversityCabaganCampus_4 = new L.geoJson(json_IsabelaStateUniversityCabaganCampus_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_IsabelaStateUniversityCabaganCampus_4',
+            layerName: 'layer_IsabelaStateUniversityCabaganCampus_4',
+            pane: 'pane_IsabelaStateUniversityCabaganCampus_4',
+            onEachFeature: pop_IsabelaStateUniversityCabaganCampus_4,
+            style: style_IsabelaStateUniversityCabaganCampus_4_0,
+        });
+        bounds_group.addLayer(layer_IsabelaStateUniversityCabaganCampus_4);
+        map.addLayer(layer_IsabelaStateUniversityCabaganCampus_4);
+        function pop_NumberofCulm_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Number of Culm</strong><br />' + (feature.properties['Number of culms'] !== null ? autolinker.link(feature.properties['Number of culms'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_NumberofCulm_5_0(feature) {
+            if (feature.properties['Number of culms'] >= 3.000000 && feature.properties['Number of culms'] <= 11.000000 ) {
+                return {
+                pane: 'pane_NumberofCulm_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Number of culms'] >= 11.000000 && feature.properties['Number of culms'] <= 20.600000 ) {
+                return {
+                pane: 'pane_NumberofCulm_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,174,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Number of culms'] >= 20.600000 && feature.properties['Number of culms'] <= 37.000000 ) {
+                return {
+                pane: 'pane_NumberofCulm_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Number of culms'] >= 37.000000 && feature.properties['Number of culms'] <= 68.200000 ) {
+                return {
+                pane: 'pane_NumberofCulm_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(171,221,164,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Number of culms'] >= 68.200000 && feature.properties['Number of culms'] <= 422.000000 ) {
+                return {
+                pane: 'pane_NumberofCulm_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,131,186,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_NumberofCulm_5');
+        map.getPane('pane_NumberofCulm_5').style.zIndex = 405;
+        map.getPane('pane_NumberofCulm_5').style['mix-blend-mode'] = 'normal';
+        var layer_NumberofCulm_5 = new L.geoJson(json_NumberofCulm_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_NumberofCulm_5',
+            layerName: 'layer_NumberofCulm_5',
+            pane: 'pane_NumberofCulm_5',
+            onEachFeature: pop_NumberofCulm_5,
+            style: style_NumberofCulm_5_0,
+        });
+        bounds_group.addLayer(layer_NumberofCulm_5);
+        map.addLayer(layer_NumberofCulm_5);
+        function pop_Bamboo_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Common Name</strong><br />' + (feature.properties['CN'] !== null ? autolinker.link(feature.properties['CN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Scientific Name</strong><br />' + (feature.properties['SN'] !== null ? autolinker.link(feature.properties['SN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Family Name</strong><br />' + (feature.properties['FN'] !== null ? autolinker.link(feature.properties['FN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Number of dead culm</strong><br />' + (feature.properties['No_dead'] !== null ? autolinker.link(feature.properties['No_dead'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Number of shoot</strong><br />' + (feature.properties['No_shoots'] !== null ? autolinker.link(feature.properties['No_shoots'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Average Diameter</strong><br />' + (feature.properties['Ave_Di'] !== null ? autolinker.link(feature.properties['Ave_Di'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Average Height</strong><br />' + (feature.properties['Ave_He'] !== null ? autolinker.link(feature.properties['Ave_He'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Remarks</strong><br />' + (feature.properties['Rem'] !== null ? autolinker.link(feature.properties['Rem'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Number of culm</strong><br />' + (feature.properties['NO.Culm'] !== null ? autolinker.link(feature.properties['NO.Culm'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Bamboo_6_0(feature) {
+            switch(String(feature.properties['CN'])) {
+                case 'Anos':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,116,211,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bayog':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,210,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bikal':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(16,233,171,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bolo':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,229,101,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Buddha':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,159,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Buho':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(55,37,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Chinese_dwarf_bamboo':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,89,96,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Giant bamboo':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,222,133,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kawayan Kiling':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(55,201,19,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kawayan Tinik':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(73,133,237,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Puser':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(45,172,200,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Yellow bamboo':
+                    return {
+                pane: 'pane_Bamboo_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,19,110,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Bamboo_6');
+        map.getPane('pane_Bamboo_6').style.zIndex = 406;
+        map.getPane('pane_Bamboo_6').style['mix-blend-mode'] = 'normal';
+        var layer_Bamboo_6 = new L.geoJson(json_Bamboo_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Bamboo_6',
+            layerName: 'layer_Bamboo_6',
+            pane: 'pane_Bamboo_6',
+            onEachFeature: pop_Bamboo_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Bamboo_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Bamboo_6);
+        map.addLayer(layer_Bamboo_6);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Bamboo<br /><table><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Anos0.png" /></td><td>Anos</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Bayog1.png" /></td><td>Bayog</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Bikal2.png" /></td><td>Bikal</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Bolo3.png" /></td><td>Bolo</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Buddha4.png" /></td><td>Buddha</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Buho5.png" /></td><td>Buho</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Chinesedwarfbamboo6.png" /></td><td>Chinese dwarf bamboo</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Giantbamboo7.png" /></td><td>Giant bamboo</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_KawayanKiling8.png" /></td><td>Kawayan Kiling</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_KawayanTinik9.png" /></td><td>Kawayan Tinik</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Puser10.png" /></td><td>Puser</td></tr><tr><td style="text-align: center;"><img src="legend/Bamboo_6_Yellowbamboo11.png" /></td><td>Yellow bamboo</td></tr></table>': layer_Bamboo_6,'Number of Culm<br /><table><tr><td style="text-align: center;"><img src="legend/NumberofCulm_5_3110.png" /></td><td>3 - 11</td></tr><tr><td style="text-align: center;"><img src="legend/NumberofCulm_5_112061.png" /></td><td>11 - 20.6</td></tr><tr><td style="text-align: center;"><img src="legend/NumberofCulm_5_206372.png" /></td><td>20.6 - 37</td></tr><tr><td style="text-align: center;"><img src="legend/NumberofCulm_5_376823.png" /></td><td>37 - 68.2</td></tr><tr><td style="text-align: center;"><img src="legend/NumberofCulm_5_6824224.png" /></td><td>68.2 - 422</td></tr></table>': layer_NumberofCulm_5,'<img src="legend/IsabelaStateUniversityCabaganCampus_4.png" /> Isabela State University Cabagan Campus': layer_IsabelaStateUniversityCabaganCampus_4,"Google Satellite": layer_GoogleSatellite_3,"OpenTopoMap": layer_OpenTopoMap_2,"Dark Matter (retina)": layer_DarkMatterretina_1,"Dark Matter [no labels] (retina)": layer_DarkMatternolabelsretina_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
